@@ -55,13 +55,13 @@ function start_stop() {
 }
 
 function reset() {
-
+    stop()
     hours = 0;
     minutes = 0;
     seconds = 0;
     miliseconds = 0;
-    
     updateTimer();
+    startStopButton.innerHTML = "Iniciar";
 }
 
 startStopButton.addEventListener("click", start_stop);
