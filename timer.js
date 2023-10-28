@@ -6,12 +6,11 @@ let miliseconds = 0
 let intervalID;
 
 let timer = document.getElementById("time");
-let startButton = document.getElementById("start");
-let stopButton = document.getElementById("stop");
+let startStopButton = document.getElementById("start-stop");
 let resetButton = document.getElementById("reset")
 
 
-function updateTimer(){
+function updateTimer() {
     timer.innerHTML = `${hours}:${minutes}:${seconds}:${miliseconds}`;
 }
 
@@ -43,7 +42,20 @@ function stop(){
     clearInterval(intervalID);
 }
 
-function reset(){
+function start_stop() {
+    let text = startStopButton.innerText;
+    if (text == "Iniciar" || text == "Continuar") {
+        startStopButton.innerHTML = "Parar"
+        start()
+    
+    } else if (text == "Parar") {
+        startStopButton.innerHTML = "Continuar";
+        stop();
+    }
+}
+
+function reset() {
+
     hours = 0;
     minutes = 0;
     seconds = 0;
@@ -52,6 +64,5 @@ function reset(){
     updateTimer();
 }
 
-startButton.addEventListener("click", start);
-stopButton.addEventListener("click", stop);
+startStopButton.addEventListener("click", start_stop);
 resetButton.addEventListener("click", reset);
